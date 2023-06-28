@@ -7,7 +7,7 @@ public class Player1 : MonoBehaviour
     public float speed;
     public float jump;
     private float Move;
-    private bool isGrounded;
+    private bool isGrounded = false;
     private Rigidbody2D rb;
     private Animator anim;
 void Start()
@@ -30,8 +30,11 @@ void Update()
     rb.velocity = new Vector2(Move * speed ,rb.velocity.y);
     if(Move != 0 && isGrounded==true){
         anim.SetBool("isWalking",true);
-    }else{
+    }
+else{
+        Debug.Log("ciccia");
         anim.SetBool("isWalking",false);
+        anim.SetBool("isFlying",true);
     }
 
 
@@ -52,6 +55,9 @@ void Update()
         rb.AddForce(new Vector2(rb.velocity.x,jump));
         isGrounded=false;
     }
+
+
+
 
     bool hasMovement = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
     if(hasMovement)
