@@ -15,7 +15,7 @@ TagManager:
   - background
   - ground
   - actors
-  - 
+  - foreground
   - 
   - 
   - 
@@ -50,4 +50,7 @@ TagManager:
     locked: 0
   - name: actors
     uniqueID: 1216653691
+    locked: 0
+  - name: foreground
+    uniqueID: 291892605
     locked: 0
