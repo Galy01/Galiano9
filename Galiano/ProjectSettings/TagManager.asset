@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - ground
+  - Coin
+  - Platform
+  - Spikes
   layers:
   - Default
   - TransparentFX
@@ -16,7 +19,7 @@ TagManager:
   - ground
   - actors
   - foreground
-  - 
+  - spykes
   - 
   - 
   - 
@@ -44,6 +47,9 @@ TagManager:
     locked: 0
   - name: background
     uniqueID: 3087102493
+    locked: 0
+  - name: spikes
+    uniqueID: 3251190123
     locked: 0
   - name: ground
     uniqueID: 2971317847

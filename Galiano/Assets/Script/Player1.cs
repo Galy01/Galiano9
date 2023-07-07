@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Player1 : MonoBehaviour
 {
     public float speed;
@@ -16,28 +16,41 @@ void Start()
     anim = GetComponent<Animator>();
 }
 
-     void OnCollisionEnter2D(Collision2D other) {
-        if(other.gameObject.CompareTag("ground")){
+     async void OnCollisionEnter2D(Collision2D other) {
+        if(other.gameObject.CompareTag("ground")|| other.gameObject.CompareTag("Platform")){
             isGrounded = true;
+        }else if(other.gameObject.CompareTag("Coin")){
+            
         }else{
             isGrounded = false;
         }
+
+
+        if(other.gameObject.CompareTag("Spikes")){
+            SceneManager.LoadScene(2);
+        }
+        
+
+
     }
 
 void Update()
 {
     Move = Input.GetAxis("Horizontal");
+    if(Move !=0){
+        gameObject.transform.SetParent(null);
+    }
     rb.velocity = new Vector2(Move * speed ,rb.velocity.y);
     if(Move != 0 && isGrounded==true){
         anim.SetBool("isWalking",true);
-    }
-else{
-        Debug.Log("ciccia");
+    }else if(Move != 0 && isGrounded==false){
         anim.SetBool("isWalking",false);
         anim.SetBool("isFlying",true);
+    }else{
+        anim.SetBool("isWalking",false);
     }
 
-
+    
 
 
     if(isGrounded==false && rb.velocity.y > 0){
@@ -56,9 +69,6 @@ else{
         isGrounded=false;
     }
 
-
-
-
     bool hasMovement = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
     if(hasMovement)
     {
@@ -66,5 +76,7 @@ else{
     }
 
 }
+
+
 
 }
