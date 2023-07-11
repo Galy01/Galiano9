@@ -31,7 +31,7 @@ public class Score : MonoBehaviour
 
     void Update(){
         if(ScoreNum == 15){
-             SceneManager.LoadScene(2);
+             SceneManager.LoadScene(3);
              //Aggiungere schermata di vittoria
         }
     }
